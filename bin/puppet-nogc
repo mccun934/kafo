@@ -1,0 +1,14 @@
+#!/usr/bin/ruby
+
+#########################################################
+#     Executes Puppet without garbage collection        #
+#                                                       #
+# !!!!!!!!!!!!!!  USE AT YOUR OWN RISK !!!!!!!!!!!!!!!! #
+#                                                       #
+# For use while the GC bug in Ruby 1.8.7 is unresolved: #
+#  https://bugzilla.redhat.com/show_bug.cgi?id=1064340  #
+#########################################################
+
+require 'puppet/util/command_line'
+GC.disable
+Puppet::Util::CommandLine.new.execute

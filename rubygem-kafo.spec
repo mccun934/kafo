@@ -70,6 +70,8 @@ sed -i "/add_dependency.*puppet/d" ./%{gem_spec}
 mkdir -p %{buildroot}%{gem_dir}
 cp -a .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
+install -d -m 0755 %{buildroot}%{_libexecdir}
+install -m 0755 .%{gem_dir}/bin/puppet-nogc %{buildroot}%{_libexecdir}/puppet
 
 %files
 %dir %{gem_instdir}
@@ -80,6 +82,8 @@ cp -a .%{gem_dir}/* \
 %{gem_dir}/bin/kafo-configure
 %{gem_dir}/bin/kafofy
 %{gem_dir}/bin/kafo-export-params
+%{gem_dir}/bin/puppet-nogc
+%{_libexecdir}/puppet
 
 %doc %{gem_instdir}/LICENSE.txt
 

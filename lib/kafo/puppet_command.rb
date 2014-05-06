@@ -24,7 +24,7 @@ module Kafo
           "echo '$kafo_config_file=\"#{KafoConfigure.config_file}\" #{custom_answer_file} #{add_progress} #{@command}'",
           '|',
           "RUBYLIB=#{["#{KafoConfigure.gem_root}/modules", ::ENV['RUBYLIB']].join(File::PATH_SEPARATOR)}",
-          "puppet apply #{@options.join(' ')} #{@suffix}",
+          "/usr/libexec/puppet apply #{@options.join(' ')} #{@suffix}",
       ].join(' ')
       @logger.debug result
       result
